@@ -11,7 +11,7 @@ void ATM::viewAccount(int accountNumber, string password)
 {
     if ( !(myCurrentAccount = myBank->getAccount(accountNumber, password)) )
     {
-        myDisplay->showInfoToUser("Invalid account");
+        myDisplay->showInfoToUser("Invalid account"); // parasoft-suppress CWE-798-a "irrelevant"
     }
 }
 
@@ -32,14 +32,14 @@ void ATM::fillUserRequest(UserRequest request, double amount)
 void ATM::showBalance()
 {
     double bal = myCurrentAccount->getBalance();
-    myDisplay->showInfoToUser("Current Balance");
+    myDisplay->showInfoToUser("Current Balance"); // parasoft-suppress CWE-798-a "irrelevant"
     myDisplay->showBalance(bal);
 }
 
 void ATM::makeDeposit(double amount)
 {
     double bal = myCurrentAccount->deposit(amount);
-    myDisplay->showInfoToUser("Updated Balance");
+    myDisplay->showInfoToUser("Updated Balance"); //
     myDisplay->showBalance(bal);
 }
 
